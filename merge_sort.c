@@ -6,19 +6,23 @@ void _merge(int *arr, int b, int m, int e){
     {
         // Comparação entre [b...m] e [m+1...e].
         if(arr[b + i] < arr[m + 1 + j]){
-            work[i++ + j] = arr[b + i];
+            work[i + j] = arr[b + i];
+            i++;
         }
         else {
-            work[i + j++] = arr[m + 1 + j];
+            work[i + j] = arr[m + 1 + j];
+            j++;
         }
     }
     while (b + i <= m) // [m+1...e] já foi utilizado
     {
-        work[i++ + j] = arr[b + i];
+        work[i + j] = arr[b + i];
+        i++;
     }
     while (m + 1 + j <= e) // [b..m] já foi utilizado
     {
-        work[i + j++] = arr[m + 1 + j];
+        work[i + j] = arr[m + 1 + j];
+        j++;
     }
 
     // Atualiza o array original
