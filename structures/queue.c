@@ -36,8 +36,10 @@ void enqueue(queue *q, int value){
 int dequeue(queue *q){
     if(q->start != NULL){
         int d = q->start->data;
+        struct queue_node *s = q->start;
         q->start = q->start->next;
-        return d; 
+        free(s);
+        return d;
     }
     else return -1;
 }
