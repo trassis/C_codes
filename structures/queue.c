@@ -43,3 +43,8 @@ int dequeue(queue *q){
     }
     else return -1;
 }
+
+int queue_empty(queue *q){
+    if(q->start == NULL) return 1;
+    else return 0;
+}
