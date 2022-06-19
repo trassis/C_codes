@@ -1,27 +1,27 @@
 // Merge dois arrays, os [b...m] e [m+1...e].
 void _merge(int *arr, int b, int m, int e){
-    int i = 0, j = 0;
+    int i = b, j = m + 1;
     int work[e - b + 1]; // Array de trabalho
-    while (b + i <= m && m + 1 + j <= e) // Merge os arrays
+    while (i <= m && j <= e) // Merge os arrays
     {
         // Comparação entre [b...m] e [m+1...e].
         if(arr[b + i] < arr[m + 1 + j]){
-            work[i + j] = arr[b + i];
+            work[i + j - b - m - 1] = arr[i];
             i++;
         }
         else {
-            work[i + j] = arr[m + 1 + j];
+            work[i + j - b - m - 1] = arr[j];
             j++;
         }
     }
-    while (b + i <= m) // [m+1...e] já foi utilizado
+    while (i <= m) // [m+1...e] já foi utilizado
     {
-        work[i + j] = arr[b + i];
+        work[i + j - b - m - 1] = arr[i];
         i++;
     }
-    while (m + 1 + j <= e) // [b..m] já foi utilizado
+    while (j <= e) // [b..m] já foi utilizado
     {
-        work[i + j] = arr[m + 1 + j];
+        work[i + j - b - m - 1] = arr[j];
         j++;
     }
 
