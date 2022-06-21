@@ -17,15 +17,8 @@ void free_vector(vector *v){
 }
 
 void vec_append(vector *v, int value){
-    int n = v->size;
-    if(v->index == n){
-        int *data = malloc(2*n*sizeof(int));
-        for (int i = 0; i < n; i++)
-        {
-            data[i] = vector->array[i];
-        }
-        free(v->array);
-        v->array = data;
+    if(v->index == v->size){
+        v->array = realloc(v->array, 2*v->size*sizeof(int));
         v->size *= 2;
     }
     v->array[v->index++] = value;
